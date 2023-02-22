@@ -144,6 +144,11 @@ int check_number_circle(char *string, int g) ///_____circle(________23.22____55,
             return 0;
         }
     }
+    if (check_comma != 1)
+    {
+        printf("Ошибка с количеством запятых\n");
+        return 0;
+    }
     if (check_branch != 0)
     {
         printf("Ошибка со скобками");
@@ -189,61 +194,6 @@ int check_word_circle(char *string, short k)
     return 1;
 }
 
-// int check_world(char *string)
-// {
-//     if (!isalpha(string[0]))
-//     {
-//         printf("Это не фигура\n");
-//         return 0;
-//     }
-    
-//     char tring[] = "triangle";
-//     char circle[] = "circle";
-//     char poligon[] = "polygon";
-
-//     short len = 1;
-//     while (isalpha(string[len]))
-//     {
-//         len += 1;
-//     }
-
-//     if (string[0] == 'c' && strlen(circle) == len) ///circleeeeee(
-//     {
-//         for (short i = 0; i < len; i++)
-//         {
-//             if (string[i] != circle[i])
-//             {
-//                 printf("Ошибка в синтаксисе\n");
-//                 return 0;
-//             }
-//         }
-//     }
-
-//     else if (string[0] == 't' && strlen(tring) == len)
-//     {
-//         for (short i = 0; i < len; i++)
-//         {
-//             if (string[i] != tring[i])
-//             {
-//                 printf("Ошибка в синтаксисе\n");
-//                 return 0;
-//             }
-//         }
-//     }
-
-//     else if (string[0] == 'p' && strlen(poligon) == len)
-//     {
-//         for (short i = 0; i < len; i++)
-//         {
-//             if (string[i] != poligon[i])
-//             {
-//                 printf("Ошибка в синтаксисе\n");
-//                 return 0;
-//             }
-//         }
-//     }
-// }
-
 int main()
 {
     // int status_string[] = {0, 0, 0};
@@ -253,7 +203,7 @@ int main()
 
     while (1)
     {
-        printf("Введите название фигуры и координаты\n");
+        printf("Введите название фигуры и координаты. Для выхода нажмите 'q'\n");
         fgets(string, 50, stdin);
 
         for (short i = 0; i < 50; i++)
@@ -281,6 +231,9 @@ int main()
                 // check += check_world_polygon(string, i);
                 printf("В разработке\n");
                 break;
+            case 'q':
+                printf("Выход...\n");
+                return 0;
             default:
                 printf("Ошибка синтаксиса! Это не фигура!\n");
                 break;
@@ -288,7 +241,7 @@ int main()
         
         if (!check)
         {
-            break;
+            // break;
         }
         check = 0;
         
