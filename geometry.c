@@ -102,7 +102,7 @@ int check_number_circle(char *string, int g) ///_____circle(________23.22____55,
             number = atof(&string[i]);
             if (check_number == 0)
             {
-                /* code */
+                number = number;
             }
             else if (check_number == 1)
             {
