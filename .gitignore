@@ -1,0 +1,7 @@
+.main.c.swp
+main.c~
+*.[oa]
+*swp
+bin/
+*.txt
+geometry
