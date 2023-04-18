@@ -75,7 +75,7 @@ int main()
         }
         area = M_PI * mas_circle->mas[i][2] * mas_circle->mas[i][2];
         perimeter = 2 * M_PI * mas_circle->mas[i][2];
-        printf("circle %d: area = %f, perimeter = %f\n", i+1, area, perimeter);
+        printf("circle %d: area = %f, perimeter = %f\n, trajectory = %f", i+1, area, perimeter, trajectory);
     }
     
     return 0;
