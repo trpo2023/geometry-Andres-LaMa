@@ -13,7 +13,7 @@ int main()
 {
     list* mas_circle = list_create();
 
-    mas_create(mas_circle);
+    // mas_create(mas_circle);
 
     char string[50] = "0";
     short check = 0;
@@ -38,9 +38,10 @@ int main()
             check = check_word_circle(string);
             if (check < 0)
             {
-                printf("Ошибка синтаксиса!\n");
+                printf("Ошибка синтаксиса %d!\n", check);
             } else
             {
+                mas_realloc(mas_circle);
                 numbers_circle(string, mas_circle);
             }
 
@@ -52,6 +53,9 @@ int main()
             return 0;
         }
     }
+    double trajectory;
+    double area;
+    double perimeter;
 
     for (unsigned short i = 0; i < mas_circle->capacity; i++)
     {
@@ -61,17 +65,18 @@ int main()
             {
                 continue;
             }
-            double trajectory = sqrt(
+            trajectory = sqrt(
                     ((mas_circle->mas[j][0] - mas_circle->mas[i][0])
                      * (mas_circle->mas[j][0] - mas_circle->mas[i][0]))
                     + ((mas_circle->mas[j][1] - mas_circle->mas[i][1])
                        * (mas_circle->mas[j][1]
                           - mas_circle->mas[i][1]))); // sqrt( (x2-x1)*(x2-x1) +
                                                       // (y2-y1)*(y2-y1))
-            double area = M_PI * mas_circle->mas[i][2] * mas_circle->mas[i][2];
-            double perimeter = 2 * M_PI * mas_circle->mas[i][2];
         }
+        area = M_PI * mas_circle->mas[i][2] * mas_circle->mas[i][2];
+        perimeter = 2 * M_PI * mas_circle->mas[i][2];
+        printf("circle %d: area = %f, perimeter = %f\n", i+1, area, perimeter);
     }
-
+    
     return 0;
 }

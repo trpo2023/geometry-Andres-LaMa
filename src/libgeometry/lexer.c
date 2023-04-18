@@ -27,7 +27,7 @@ short check_word_circle(char* str)
     short check_comma = 0;
     short check_sing = 0;
 
-    while (str[i]) // circle( f.12, 3 -22-3)
+    while (str[i] && str[i] != '\n') // circle( f.12, 3 -22-3)
     {
         if (str[i] == '(' && check_branch >= 0)
         {
@@ -55,7 +55,7 @@ short check_word_circle(char* str)
                 }
                 if (check_dot > 1)
                 {
-                    return -1;
+                    return -6;
                 }
                 i += 1;
             }
@@ -66,14 +66,14 @@ short check_word_circle(char* str)
             i += 1;
             if (str[i] == '-' && str[i + 1] == '-')
             {
-                return -1;
+                return -7;
             } else
             {
                 check_sing = 0;
             }
         } else
         {
-            return -1;
+            return -8;
         }
     }
     if (check_branch != 0)
@@ -81,14 +81,14 @@ short check_word_circle(char* str)
         return -1;
     } else if (check_number != 3)
     {
-        return -1;
+        return -2;
     } else if (check_comma != 1)
     {
-        return -1;
+        return -3;
     } else if (check_sing != 0) //идея для каждой ошибки выводить свой код //
                                 //странное условие
     {
-        return -1;
+        return -4;
     }
     return 0;
 }
