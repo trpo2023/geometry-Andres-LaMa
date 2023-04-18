@@ -31,7 +31,7 @@ int main()
         }
 
         strip_extra_spaces(string); //____circle(... ___... __...___) ->
-                                    //circle(..._..._...)
+                                    // circle(..._..._...)
 
         if (string[0] == 'c')
         {
