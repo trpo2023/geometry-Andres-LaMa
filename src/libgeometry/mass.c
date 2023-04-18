@@ -11,8 +11,7 @@ list* list_create()
 
     a->capacity = 0;
     a->mas = (int**)malloc(0 * sizeof(int*));
-    assert((a->mas != NULL)
-           && "Memory was not allocated under mas_circle.mas");
+    assert((a->mas != NULL) && "Memory was not allocated under mas_circle.mas");
 
     a->mas[0] = (int*)malloc(0 * sizeof(int));
     assert((a->mas[0] != NULL)
@@ -51,9 +50,10 @@ void mas_realloc(list* circle)
     for (short i = 0; i < circle->capacity; i++)
     {
         temp_m[i] = (int*)realloc(circle->mas[i], 3 * circle->capacity);
-        assert((temp_m[i] != NULL) && "Memory was not reallocated under temp[i]");
+        assert((temp_m[i] != NULL)
+               && "Memory was not reallocated under temp[i]");
     }
-    
+
     assert((temp_m != NULL) && "Memory was not reallocated under temp");
 
     circle->mas = temp_m;
