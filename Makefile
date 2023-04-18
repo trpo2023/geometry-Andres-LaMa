@@ -1,2 +1,29 @@
-geometry: geometry.c
-	gcc -Wall -Werror -o geometry geometry.c
+TARGET = geometry
+CC = gcc
+CFLAGS = -Wall -I src
+
+PREF_SRC_GEOMETRY = ./src/geometry/
+PREF_SRC_LIBGEOMETRY = ./src/libgeometry/
+PREF_OBJ_GEOMETRY = ./obj/src/geometry/
+PREF_OBJ_LIBGEOMETRY = ./obj/src/libgeometry/
+PREF_BIN = ./bin/
+
+SRC_GEOMETRY = $(wildcard $(PREF_SRC_GEOMETRY)*.c)
+SRC_LIBGEOMETRY = $(wildcard $(PREF_SRC_LIBGEOMETRY)*.c)
+
+OBJ_GEOMETRY = $(patsubst $(PREF_SRC_GEOMETRY)%.c, $(PREF_OBJ_GEOMETRY)%.o, $(SRC_GEOMETRY))
+OBJ_LIBGEOMETRY = $(patsubst $(PREF_SRC_LIBGEOMETRY)%.c, $(PREF_OBJ_LIBGEOMETRY)%.o, $(SRC_LIBGEOMETRY))
+
+$(PREF_BIN)$(TARGET)1 : $(OBJ_GEOMETRY) $(OBJ_LIBGEOMETRY)
+	$(CC) $(CFLAGS) $(OBJ_GEOMETRY) $(OBJ_LIBGEOMETRY) -o $(PREF_BIN)$(TARGET) -lm
+
+$(PREF_OBJ_GEOMETRY)%.o : $(PREF_SRC_GEOMETRY)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(PREF_OBJ_LIBGEOMETRY)%.o : $(PREF_SRC_LIBGEOMETRY)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+run :
+		$(PREF_BIN)$(TARGET)
+clean :
+	rm $(PREF_BIN)$(TARGET) $(PREF_OBJ_GEOMETRY)*.o $(PREF_OBJ_LIBGEOMETRY)*.o
