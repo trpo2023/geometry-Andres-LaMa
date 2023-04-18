@@ -2,11 +2,11 @@
 typedef struct list
 {
     int capacity;
-    int **mas;
-}list;
+    int** mas;
+} list;
 
-list *list_create();
+list* list_create();
 
-void mas_create(list *circle);
+void mas_create(list* circle);
 
-void mas_realloc(list *circle);
+void mas_realloc(list* circle);

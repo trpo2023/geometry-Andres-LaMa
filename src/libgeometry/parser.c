@@ -1,10 +1,10 @@
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "mass.h"
 
-void numbers_circle(char *str, list *circle) // circle( 12.443 -212.232, 2)
+void numbers_circle(char* str, list* circle) // circle( 12.443 -212.232, 2)
 {
     short i = 0;
     short sign = 1;
@@ -15,8 +15,7 @@ void numbers_circle(char *str, list *circle) // circle( 12.443 -212.232, 2)
         if (str[i] == '-')
         {
             sign *= -1;
-        }
-        else if (isdigit(str[i]))
+        } else if (isdigit(str[i]))
         {
             number = atof(&str[i]);
             while (isdigit(str[i]) || str[i] == '.')
@@ -26,11 +25,9 @@ void numbers_circle(char *str, list *circle) // circle( 12.443 -212.232, 2)
             circle->mas[circle->capacity - 1][position] = number * sign;
             position += 1;
             sign = 1;
-        }
-        else
+        } else
         {
             i += 1;
         }
     }
-    
 }
