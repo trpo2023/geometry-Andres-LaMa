@@ -1,5 +1,5 @@
-main.c
-lexer.c
-mass.c
-parser.c
+main.o
+lexer.o
+mass.o
+parser.o
 geometry
