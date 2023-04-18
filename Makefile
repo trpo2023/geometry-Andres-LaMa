@@ -1,6 +1,8 @@
 TARGET = geometry
 CC = gcc
-CFLAGS = -Wall -I src
+CFLAGS = -Wall -Wextra -Werror
+DEBAGFLAGS = -g3 -O0
+DIRECTORIFLAGC = -I src
 
 PREF_SRC_GEOMETRY = ./src/geometry/
 PREF_SRC_LIBGEOMETRY = ./src/libgeometry/
@@ -15,13 +17,13 @@ OBJ_GEOMETRY = $(patsubst $(PREF_SRC_GEOMETRY)%.c, $(PREF_OBJ_GEOMETRY)%.o, $(SR
 OBJ_LIBGEOMETRY = $(patsubst $(PREF_SRC_LIBGEOMETRY)%.c, $(PREF_OBJ_LIBGEOMETRY)%.o, $(SRC_LIBGEOMETRY))
 
 $(PREF_BIN)$(TARGET)1 : $(OBJ_GEOMETRY) $(OBJ_LIBGEOMETRY)
-	$(CC) $(CFLAGS) $(OBJ_GEOMETRY) $(OBJ_LIBGEOMETRY) -o $(PREF_BIN)$(TARGET) -lm
+	$(CC) $(CFLAGS) $(DIRECTORIFLAGC) $(OBJ_GEOMETRY) $(OBJ_LIBGEOMETRY) -o $(PREF_BIN)$(TARGET) -lm
 
 $(PREF_OBJ_GEOMETRY)%.o : $(PREF_SRC_GEOMETRY)%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DIRECTORIFLAGC) -c $< -g3 -O0 -o $@
 
 $(PREF_OBJ_LIBGEOMETRY)%.o : $(PREF_SRC_LIBGEOMETRY)%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(DIRECTORIFLAGC) -c $< -g3 -O0 -o $@
 
 run :
 		$(PREF_BIN)$(TARGET)
