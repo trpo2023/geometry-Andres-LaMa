@@ -14,7 +14,7 @@ jobs:
 
       - name: Build application
         run: make
-
       - name: test
         run: make test
+      - name: test-run
         run: make run-test
