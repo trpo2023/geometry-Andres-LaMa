@@ -16,7 +16,7 @@ PREF_OBJ_LIBGEOMETRY = ./obj/src/libgeometry/
 PREF_OBJ_TEST = ./obj/test/
 
 PREF_BIN = ./bin/
-
+make:
 SRC_GEOMETRY = $(wildcard $(PREF_SRC_GEOMETRY)*.c)
 SRC_LIBGEOMETRY = $(wildcard $(PREF_SRC_LIBGEOMETRY)*.c)
 SRC_TEST = $(wildcard $(PREF_SRC_TEST)*.c)
