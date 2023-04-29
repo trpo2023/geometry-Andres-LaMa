@@ -44,11 +44,10 @@ clean :
 	rm $(PREF_BIN)$(TARGET) $(PREF_OBJ_GEOMETRY)*.o $(PREF_OBJ_LIBGEOMETRY)*.o $(PREF_OBJ_LIBGEOMETRY)*.a $(PREF_OBJ_TEST)*.o $(PREF_BIN)$(TARGET_TEST)
 
 .PHONY : test
-test : $(PREF_BIN)$(TARGET_TEST)
+test : run-test
+run-test :
+	$(PREF_BIN)$(TARGET_TEST)
 $(PREF_BIN)$(TARGET_TEST) : $(OBJ_TEST) $(PREF_OBJ_LIBGEOMETRY)libgeometry.a
 	$(CC) $(CFLAGS) $(OBJ_TEST) $(PREF_OBJ_LIBGEOMETRY)libgeometry.a -o $(PREF_BIN)$(TARGET_TEST) -lm
 $(PREF_OBJ_TEST)%.o : $(PREF_SRC_TEST)%.c
 	$(CC) $(CFLAGS) $(DIRECTORIFLAGS_TEST) -c $< -o $@
-
-run-test :
-	$(PREF_BIN)$(TARGET_TEST)
