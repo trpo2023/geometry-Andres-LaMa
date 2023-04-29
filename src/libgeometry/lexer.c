@@ -40,11 +40,16 @@ short check_word_circle(char* str)
         } else if (str[i] == ' ')
         {
             i += 1;
-        } else if (str[i] == ',' && check_number == 2)
+        } else if (str[i] == ',')
         {
+            if (check_number != 2)
+            {
+                return -4;
+            }
+
             check_comma += 1;
             i += 1;
-        } else if (isdigit(str[i]))
+        } else if (isdigit(str[i])) // circle(1 2, -22-3)
         {
             short check_dot = 0;
             while (isdigit(str[i]) || str[i] == '.')
@@ -60,35 +65,38 @@ short check_word_circle(char* str)
                 i += 1;
             }
             check_number += 1;
-        } else if (str[i] == '-' && check_number != 2)
+        } else if (str[i] == '-')
         {
+            if (check_number == 2)
+            {
+                return -5;
+            }
             check_sing += 1;
             i += 1;
             if (str[i] == '-' && str[i + 1] == '-')
             {
-                return -7;
+                return -5;
             } else
             {
                 check_sing = 0;
             }
         } else
         {
-            return -8;
+            return -7;
         }
     }
     if (check_branch != 0)
     {
-        return -1;
+        return -2;
     } else if (check_number != 3)
     {
-        return -2;
+        return -3;
     } else if (check_comma != 1)
     {
-        return -3;
-    } else if (check_sing != 0) //идея для каждой ошибки выводить свой код //
-                                //странное условие
-    {
         return -4;
+    } else if (check_sing != 0) //идея для каждой ошибки выводить свой код //
+    {
+        return -5;
     }
     return 0;
 }

@@ -3,3 +3,6 @@ lexer.o
 mass.o
 parser.o
 geometry
+geometry-test
+parcer_test.o
+libgeometry.a
