@@ -45,7 +45,7 @@ clean :
 
 .PHONY : test
 test : run-test
-run-test :
+run-test : $(PREF_BIN)$(TARGET_TEST)
 	$(PREF_BIN)$(TARGET_TEST)
 $(PREF_BIN)$(TARGET_TEST) : $(OBJ_TEST) $(PREF_OBJ_LIBGEOMETRY)libgeometry.a
 	$(CC) $(CFLAGS) $(OBJ_TEST) $(PREF_OBJ_LIBGEOMETRY)libgeometry.a -o $(PREF_BIN)$(TARGET_TEST) -lm
