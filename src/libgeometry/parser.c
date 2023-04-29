@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,5 +30,32 @@ void numbers_circle(char* str, list* circle) // circle( 12.443 -212.232, 2)
         {
             i += 1;
         }
+    }
+}
+
+double perimeter_c(double radius)
+{
+    if (radius < 0)
+        return -1;
+    return 2 * M_PI * (radius);
+}
+
+double area_c(double radius)
+{
+    if (radius < 0)
+        return -1;
+    return M_PI * radius * radius;
+}
+
+short intersection_c(list* mas_circle, int i, int j)
+{
+    if (sqrt(pow(mas_circle->mas[j][0] - mas_circle->mas[i][0], 2)
+             + pow(mas_circle->mas[j][1] - mas_circle->mas[i][1], 2))
+        < mas_circle->mas[i][2] + mas_circle->mas[j][2])
+    {
+        return 1;
+    } else
+    {
+        return 0;
     }
 }
